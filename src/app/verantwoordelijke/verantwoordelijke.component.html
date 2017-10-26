@@ -4,7 +4,7 @@
     <p>Hieronder vindt u een overzicht van de patiënten waarvoor u verantwoordelijk bent:</p>
     <ul class="collection">
       <li class="collection-item avatar" *ngFor="let patient of verantwoordelijke.patienten">
-        <img id="face" src="../assets/images/unknown.png" alt="">
+        <img id="face" src="assets/images/unknown.png" alt="">
         <span class="title">
           <b>Patiënt:</b> {{patient.voornaam}}, {{patient.naam}}</span>
         <p>
@@ -13,7 +13,7 @@
           <b>Verdieping: </b>{{patient.verdieping}}
           <br>
         </p>
-        <a href="../patient/patient.component.html" class="secondary-content">
+        <a href="#" class="secondary-content">
           <a class="waves-effect waves-light btn">Meer info</a>
         </a>
       </li>
