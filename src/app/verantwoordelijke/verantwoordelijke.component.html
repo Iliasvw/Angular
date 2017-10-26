@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <h1>Goedemorgen {{verantwoordelijke.voornaam}}</h1>
+    <p>Hieronder vindt u een overzicht van de patiënten waarvoor u verantwoordelijk bent:</p>
+    <ul class="collection">
+      <li class="collection-item avatar" *ngFor="let patient of verantwoordelijke.patienten">
+        <img id="face" src="../assets/images/unknown.png" alt="">
+        <span class="title">
+          <b>Patiënt:</b> {{patient.voornaam}}, {{patient.naam}}</span>
+        <p>
+          <b>Kamer: </b>{{patient.kamer}}
+          <br>
+          <b>Verdieping: </b>{{patient.verdieping}}
+          <br>
+        </p>
+        <a href="../patient/patient.component.html" class="secondary-content">
+          <a class="waves-effect waves-light btn">Meer info</a>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

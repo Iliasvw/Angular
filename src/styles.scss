@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+$roboto-font-path: "~materialize-css/dist/fonts/roboto/";
+@import "~materialize-css/sass/materialize.scss";
+header{
+     line-height: 0;
+}
+
+#headerImg{
+    max-height: 240px;
+}
+
+#logo {
+    width: 200px;
+    margin-top: 10px;
+    @media screen and (min-width: 993px){
+        margin-top: 12.5px;
+        margin-left: 30px;
+    }
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+main {
+    flex: 1 0 auto;
+}
+
+.collection-item {
+    padding-left: 100px !important;
+    padding-bottom: 15px !important;
+    #face {
+        @extend .circle;
+        border-radius: 0px;
+        width: 75px !important;
+        height: auto !important;
+    }
+
+    .secondary-content {
+        @media screen and (max-width: 750px) {
+            position: relative !important;
+            float: none !important;
+            right: 0px !important;
+            top: 5px !important;
+            bottom: 20px !important;
+        }
+    }
+}
+
