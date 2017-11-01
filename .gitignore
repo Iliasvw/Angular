@@ -1,42 +1,48 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
-/tmp
-/out-tsc
+rusthuisfrontend/dist
+rusthuisfrontend/tmp
+rusthuisfrontend/out-tsc
 
 # dependencies
-/node_modules
+rusthuisfrontend/node_modules
 
 # IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+rusthuisfrontend/.idea
+rusthuisfrontend/.project
+rusthuisfrontend/.classpath
+rusthuisfrontend/.c9/
+rusthuisfrontend/*.launch
+rusthuisfrontend/.settings/
+rusthuisfrontend/*.sublime-workspace
 
 # IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+rusthuisfrontend/.vscode/*
+rusthuisfrontend/!.vscode/settings.json
+rusthuisfrontend/!.vscode/tasks.json
+rusthuisfrontend/!.vscode/launch.json
+rusthuisfrontend/!.vscode/extensions.json
 
 # misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-testem.log
-/typings
+rusthuisfrontend/.sass-cache
+rusthuisfrontend/connect.lock
+rusthuisfrontend/coverage
+rusthuisfrontend/libpeerconnection.log
+rusthuisfrontend/npm-debug.log
+rusthuisfrontend/testem.log
+rusthuisfrontend/typings
 
 # e2e
-/e2e/*.js
-/e2e/*.map
+rusthuisfrontend/e2e/*.js
+rusthuisfrontend/e2e/*.map
 
 # System Files
 .DS_Store
 Thumbs.db
+
+# Back-end repo
+rusthuisbackend/node_modules
+rusthuisbackend/package-lock.json
+rusthuisbackend/*.log
+rusthuisbackend/*.gz
