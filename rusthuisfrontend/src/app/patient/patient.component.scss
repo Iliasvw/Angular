@@ -1,0 +1,19 @@
+#bewonerImg {
+    margin-top: 20px;
+    display: block;
+
+    @media screen and (max-width: 600px) {
+        margin: auto;
+        margin-top: 25px;
+    }
+}
+
+h1 {
+    margin-bottom: -5px !important;
+}
+
+#fiche {
+    h1 {
+        border-bottom: 2px solid black;
+    }
+}

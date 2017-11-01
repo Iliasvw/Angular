@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 $roboto-font-path: "~materialize-css/dist/fonts/roboto/";
 @import "~materialize-css/sass/materialize.scss";
+
+$primary: #00897b;
+$secondary: #00bfa5;
+
 header{
      line-height: 0;
 }
@@ -16,16 +20,6 @@ header{
         margin-top: 12.5px;
         margin-left: 30px;
     }
-}
-
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-
-main {
-    flex: 1 0 auto;
 }
 
 .collection-item {
@@ -47,5 +41,34 @@ main {
             bottom: 20px !important;
         }
     }
+}
+
+#mobile-demo {
+    background-color: $secondary;
+    padding-top: 0px;
+    li {
+        text-align: center !important;
+        border-bottom: 1px solid $primary;
+        
+        a {
+            color: white;
+        }
+    }
+}
+
+h1 {
+    font-size: 42px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+h4 {
+    font-size: 18px;
 }
 

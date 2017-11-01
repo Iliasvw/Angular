@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h1>Overzicht</h1>
+      <p>Hieronder vindt u een overzicht van de bewoners/bewoonsters waarvoor u verantwoordelijk bent.</p>
+      <ul class="collection">
+        <li class="collection-item avatar" *ngFor="let patient of patienten">
+          <img id="face" src="assets/images/unknown.png" alt="">
+          <span class="title">
+            <b>Patiënt:</b> {{patient.voornaam}}, {{patient.naam}}</span>
+          <p>
+            <b>Kamer: </b>{{patient.kamer}}
+            <br>
+            <b>Verdieping: </b>{{patient.verdieping}}
+            <br>
+          </p>
+          <a href="/bewoner" class="secondary-content">
+            <a class="waves-effect waves-light btn">Meer info</a>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
