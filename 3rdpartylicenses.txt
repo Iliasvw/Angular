@@ -71,6 +71,10 @@ THE SOFTWARE.
 MIT
 MIT
 
+@angular/router@4.4.5
+MIT
+MIT
+
 @angular/platform-browser@4.4.5
 MIT
 MIT
