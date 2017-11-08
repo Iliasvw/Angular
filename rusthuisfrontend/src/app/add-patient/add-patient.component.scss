@@ -1,0 +1,21 @@
+h3 {
+    border-bottom: 1px solid black;
+}
+
+select, #check { 
+    display: block !important;
+    width: 90%;
+    margin: auto;
+}
+
+#check {
+    margin-top: 20px;
+}
+
+#selectVerantw {
+    display: none;
+}
+
+#infoverantwoordelijke {
+    display: block;
+}

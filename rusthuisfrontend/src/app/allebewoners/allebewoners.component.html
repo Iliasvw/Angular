@@ -3,8 +3,11 @@
     <div class="col s12">
       <h1>Overzicht</h1>
       <p>Hieronder vindt u een overzicht van de bewoners/bewoonsters waarvoor u verantwoordelijk bent.</p>
+      <div class="row">
+          <a class="btn wave-effect" routerLink="/nieuwebewoner">Bewoner toevoegen</a>
+      </div>
       <ul class="collection">
-        <li class="collection-item avatar" *ngFor="let patient of patienten">
+        <li class="collection-item avatar" *ngFor="let patient of patienten | async">
           <img id="face" src="assets/images/unknown.png" alt="">
           <span class="title">
             <b>Patiënt:</b> {{patient.voornaam}}, {{patient.naam}}</span>
@@ -14,7 +17,7 @@
             <b>Verdieping: </b>{{patient.verdieping}}
             <br>
           </p>
-          <a href="/bewoner" class="secondary-content">
+          <a [routerLink]="['/bewoner', patient.id]" class="secondary-content">
             <a class="waves-effect waves-light btn">Meer info</a>
           </a>
         </li>

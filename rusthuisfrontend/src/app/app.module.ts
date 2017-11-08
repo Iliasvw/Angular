@@ -12,14 +12,20 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AdddokterComponent } from './adddokter/adddokter.component';
 import { AllebewonersComponent } from './allebewoners/allebewoners.component';
+import { HttpModule } from '@angular/http';
+import { AddPatientComponent } from './add-patient/add-patient.component';
+import { AddVerantwoordelijkeComponent } from './add-verantwoordelijke/add-verantwoordelijke.component';
+import { LOCALE_ID } from '@angular/core';
 
 const appRoutes: Routes = [
   //{ path: 'bewoners', component: CrisisListComponent }
   { path: 'verantwoordelijke', component: VerantwoordelijkeComponent},
   { path: 'login', component: LoginComponent},
   { path: '', component: HomeComponent},
-  { path: 'bewoner', component: PatientComponent},
-  { path: 'bewoners', component: AllebewonersComponent}
+  { path: 'bewoner/:id', component: PatientComponent},
+  { path: 'bewoners', component: AllebewonersComponent},
+  { path: 'nieuwebewoner', component: AddPatientComponent},
+  { path: 'wijzigbewoner/:id', component: AddPatientComponent}
   /*{ path: 'hero/:id',      component: HeroDetailComponent },
   {
     path: 'heroes',
@@ -44,17 +50,23 @@ const appRoutes: Routes = [
     LoginComponent,
     HomeComponent,
     AdddokterComponent,
-    AllebewonersComponent
+    AllebewonersComponent,
+    AddPatientComponent,
+    AddVerantwoordelijkeComponent
   ],
   imports: [
     BrowserModule,
     MaterializeModule,
+    HttpModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: "nl" }
+    //otherProviders...
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

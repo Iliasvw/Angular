@@ -4,36 +4,39 @@
       <img src="assets/images/unknown.png" id="bewonerImg" width="200" height="200" />
     </div>
     <div class="col l9 m7 s12">
-      <h1>{{bewoner.naam}}, {{bewoner.voornaam}}</h1>
+      <h1>{{bewoner?.naam}}, {{bewoner?.voornaam}}</h1>
       <ul>
         <li>
-          <b>Kamer: </b>{{bewoner.kamer}}</li>
+          <b>Geboortedatum: </b>{{bewoner?.geboortedatum | date:'fullDate':'':'be_nl'}}<!--{{bewoner?.geboortedatum.getUTCDay()}}/{{bewoner?.geboortedatum.getUTCMonth() + 1}}/{{bewoner?.geboortedatum.getUTCFullYear()}}--></li>
         <li>
-          <b>Verdieping: </b>{{bewoner.verdieping}}</li>
+          <b>Kamer: </b>{{bewoner?.kamer}}</li>
         <li>
-          <b>Verantwoordelijke: </b>{{bewoner.verantwoordelijke.naam}}, {{bewoner.verantwoordelijke.voornaam}}</li>
+          <b>Verdieping: </b>{{bewoner?.verdieping}}</li>
         <li>
-          <b>Dokter: </b>
-          <a class="modal-trigger" href="#dokter">{{bewoner.dokter.naam}}, {{bewoner.dokter.voornaam}}</a>
-          <div id="dokter" class="modal">
-            <div class="modal-content">
-              <h2>Gegevens van de dokter</h2>
-              <ul>
-                <li>
-                  <b>Naam: </b>{{bewoner.dokter.naam}}, {{bewoner.dokter.voornaam}}</li>
-                <li>
-                  <b>Telefoon: </b>{{bewoner.dokter.telefoon}}</li>
-                <li>
-                  <b>Info: </b>{{bewoner.dokter.info}}</li>
-              </ul>
-            </div>
-            <div class="modal-footer">
-              <a href="/bewoner" class="modal-action modal-close waves-effect waves-green btn-flat">Sluiten</a>
-            </div>
+          <b>Verantwoordelijke: </b>{{bewoner?.verantwoordelijke.naam}}, {{bewoner?.verantwoordelijke.voornaam}}</li>
+        <b>Dokter: </b>
+        <a class="modal-trigger" href="#dokter" term>{{bewoner?.dokter?.naam}}, {{bewoner?.dokter?.voornaam}}</a>
+        <div id="dokter" class="modal">
+          <div class="modal-content">
+            <h2>Gegevens van de dokter</h2>
+            <ul>
+              <li>
+                <b>Naam: </b>{{bewoner?.dokter?.naam}}, {{bewoner?.dokter?.voornaam}}</li>
+              <li>
+                <b>Telefoon: </b>{{bewoner?.dokter?.telefoon}}</li>
+              <li>
+                <b>Info: </b>{{bewoner?.dokter?.info}}</li>
+            </ul>
           </div>
-        </li>
+          <div class="modal-footer">
+            <a routerLink="[/bewoner, patient.id]" class="modal-action modal-close waves-effect waves-green btn-flat">Sluiten</a>
+          </div>
+        </div>
         <li>
-          <b>Verpleegkundige: </b>{{bewoner.verpleegkundige.naam}}, {{bewoner.verpleegkundige.voornaam}}</li>
+          <b>Verpleegkundige: </b>{{bewoner?.verpleegkundige?.naam}}, {{bewoner?.verpleegkundige?.voornaam}}</li>
+        <li>
+          <a class="btn wave-effect" href="#">Wijzigen</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -41,20 +44,16 @@
     <ul id="fiche">
       <li>
         <h1>Medisch dossier en medicatie</h1>
-        <p>{{bewoner.medisch}}</p>
+        <p>{{bewoner?.medisch}}</p>
       </li>
       <li>
         <h1>Voeding</h1>
-        <p>{{bewoner.voeding}}</p>
+        <p>{{bewoner?.voeding}}</p>
       </li>
       <li>
         <h1>Speciale behoeften</h1>
-        <p>{{bewoner.specialeBehoeften}}</p>
+        <p>{{bewoner?.specialeBehoeften}}</p>
       </li>
     </ul>
   </div>
 </div>
-
-<!-- Dokter, naam, kamer, verdieping, verantwoordelijke, 
-Medisch dossier + medicatie, huisarts, verantwoordelijke verpleegkundige
-speciale voeding, speciale behoeften-->

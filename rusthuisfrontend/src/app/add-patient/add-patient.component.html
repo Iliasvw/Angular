@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="row">
+    <h1>Toevoegen bewoner</h1>
+    <p>Hieronder heeft u de mogelijkheid om een nieuwe bewoner toe te voegen.</p>
+    <form>
+      <div class="col l6 s12">
+        <h3>Algemene gegevens</h3>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="naambewoner" type="text" class="validate">
+            <label for="naambewoner">Naam</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="voornaambewoner" type="text" class="validate">
+            <label for="voornaambewoner">Voornaam</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="date" id="geboortedatum">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="kamer" type="number" class="validate">
+            <label for="kamer">Kamer</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="verdieping" type="number" class="validate">
+            <label for="verdieping">Verdieping</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="sbehoeften" class="materialize-textarea"></textarea>
+            <label for="sbehoeften">Speciale behoeften</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="medisch" class="materialize-textarea"></textarea>
+            <label for="medisch">Medisch dossier en medicatie</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="voeding" class="materialize-textarea"></textarea>
+            <label for="voeding">Voeding</label>
+          </div>
+        </div>
+      </div>
+      <div class="col l6 s12">
+        <h3>Verantwoordelijke</h3>
+        <div id="selectVerantw" class="row">
+          <select class="icons">
+            <option value="" disabled selected>Kies een verantwoordelijke</option>
+            <option value="" data-icon="images/sample-1.jpg" class="left circle">example 1</option>
+            <option value="" data-icon="images/office.jpg" class="left circle">example 2</option>
+            <option value="" data-icon="images/yuna.jpg" class="left circle">example 3</option>
+          </select>
+        </div>
+        <div class="row">
+          <p id="check">
+            <input type="checkbox" class="filled-in" id="filled-in-box" checked/>
+            <label for="filled-in-box">Nieuwe verantwoordelijke</label>
+          </p>
+        </div>
+        <div id="infoverantwoordelijke">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="naamverantw" type="text" class="validate">
+              <label for="naamverantw">Naam</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="voornaamverantw" type="text" class="validate">
+              <label for="voornaamverantw">Voornaam</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="submit" type="submit" class="wave-effect btn" value="Toevoegen">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
