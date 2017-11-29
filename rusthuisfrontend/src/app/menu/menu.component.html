@@ -12,12 +12,22 @@
         <li>
           <a routerLink="/">Home</a>
         </li>
-        <li>
-          <a routerLink="/bewoners">Inwoners</a>
+        <li *ngIf="isAdmin()">
+          <a routerLink="/controlepaneel">Controlepaneel</a>
         </li>
-        <li>
-          <a routerLink="/login">Login</a>
-        </li>
+        <span *ngIf="(currentUser | async) else loginlink">
+          <li>
+            <a routerLink="/bewoners">Inwoners</a>
+          </li>
+          <li>
+            <a routerLink="/logout">{{(currentUser | async)}}, uitloggen</a>
+          </li>
+        </span>
+        <ng-template #loginlink>
+          <li>
+            <a routerLinkActive='active' routerLink="/login">Login</a>
+          </li>
+        </ng-template>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li id="close">
@@ -26,13 +36,30 @@
         <li>
           <a routerLink="/">Home</a>
         </li>
-        <li>
-          <a routerLink="/bewoners">Inwoners</a>
+        <li *ngIf="isAdmin()">
+          <a routerLink="/controlepaneel">Controlepaneel</a>
         </li>
-        <li>
-          <a routerLink="/login">Login</a>
-        </li>
+        <span *ngIf="(currentUser | async) else loginlink">
+          <li>
+            <a routerLink="/bewoners">Inwoners</a>
+          </li>
+          <li>
+            <a routerLink="/logout">{{(currentUser | async)}}, uitloggen</a>
+          </li>
+        </span>
+        <ng-template #loginlink>
+          <li>
+            <a routerLinkActive='active' routerLink="/login">Login</a>
+          </li>
+        </ng-template>
       </ul>
     </div>
   </nav>
 </header>
+
+<!-- 
+<a *ngIf='(currentUser | async) else loginlink' class="item" routerLinkActive='active' routerLink="/logout">{{currentUser|async}}</a>
+    <ng-template #loginlink>
+      <a class="item" routerLinkActive='active' routerLink="/login">log in</a>
+    </ng-template>
+-->

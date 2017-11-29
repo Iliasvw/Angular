@@ -1,0 +1,47 @@
+.notificaties {
+    /*.not:nth-child(2n) {
+        background-color: red;
+    }
+
+    .not:nth-child(2n+1) {
+        background-color: blue;
+    }
+
+    .not:nth-child(3n) {
+        background-color: green;   
+    }*/
+
+    .not {
+        @media screen and (max-width: 601px) {
+            display: block;
+        }
+
+        border: 2px solid #00897b;
+        padding: 7.5px;
+        border-radius: 7.5px;
+        overflow: hidden;
+        display: flex;
+
+        @media screen and (max-width: 601px) {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        p {
+            //float: left;
+            //width: 100%;
+            flex: 1;
+            padding-right: 10px;
+        }
+        button {
+            margin-top: 7.5px;
+            //float: right;
+            //width: 150px;
+            @media screen and (max-width: 601px) {
+                clear: both;
+                float: left;
+                margin-top: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <h1>Notificatiecentrum</h1>
+    <p>Hieronder vindt u de verschillende notificaties van de verantwoordelijken van de bewoners.</p>
+    <button (click)="verwijderNotificaties()" class="btn wave-effect">Markeer als gelezen</button>
+  </div>
+  <div class="row notificaties">
+    <div class="row not" *ngFor="let not of notificaties">
+      <p><b>{{ not.date | date:'longDate':'':'be_nl' }}:</b> {{ not.message }}</p>
+      <button class="btn wave-effect" [routerLink]="['/chat', not.patientid]">Bekijk bericht</button>
+    </div>
+  </div>
+</div>

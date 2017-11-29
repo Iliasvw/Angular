@@ -4,38 +4,39 @@
       <img src="assets/images/unknown.png" id="bewonerImg" width="200" height="200" />
     </div>
     <div class="col l9 m7 s12">
-      <h1>{{bewoner?.naam}}, {{bewoner?.voornaam}}</h1>
+      <h1>{{bewoner.naam}}, {{bewoner.voornaam}}</h1>
       <ul>
         <li>
-          <b>Geboortedatum: </b>{{bewoner?.geboortedatum | date:'fullDate':'':'be_nl'}}<!--{{bewoner?.geboortedatum.getUTCDay()}}/{{bewoner?.geboortedatum.getUTCMonth() + 1}}/{{bewoner?.geboortedatum.getUTCFullYear()}}--></li>
+          <b>Geboortedatum: </b>{{bewoner.geboortedatum | date:'fullDate':'':'be_nl'}}</li>
         <li>
-          <b>Kamer: </b>{{bewoner?.kamer}}</li>
+          <b>Kamer: </b>{{bewoner.kamer}}</li>
         <li>
-          <b>Verdieping: </b>{{bewoner?.verdieping}}</li>
-        <li>
-          <b>Verantwoordelijke: </b>{{bewoner?.verantwoordelijke.naam}}, {{bewoner?.verantwoordelijke.voornaam}}</li>
-        <b>Dokter: </b>
-        <a class="modal-trigger" href="#dokter" term>{{bewoner?.dokter?.naam}}, {{bewoner?.dokter?.voornaam}}</a>
-        <div id="dokter" class="modal">
+          <b>Verdieping: </b>{{bewoner.verdieping}}</li>
+        <li *ngIf="isAdmin()">
+          <b>Verantwoordelijke: </b><a [routerLink]="['/verantwoordelijke', bewoner?.verantwoordelijke.id]">{{bewoner.verantwoordelijke.naam}}, {{bewoner?.verantwoordelijke.voornaam}}</a></li>
+        <b>Dokter: </b><span *ngIf="!bewoner.dokter.id">/</span>
+        <a *ngIf="bewoner?.dokter.id" class="modal-trigger" href="#dokter" term>{{bewoner.dokter.naam}}, {{bewoner.dokter.voornaam}}</a>
+        <div id="dokter" materialize="modal" class="modal">
           <div class="modal-content">
             <h2>Gegevens van de dokter</h2>
             <ul>
               <li>
-                <b>Naam: </b>{{bewoner?.dokter?.naam}}, {{bewoner?.dokter?.voornaam}}</li>
+                <b>Naam: </b>{{bewoner.dokter.naam}}, {{bewoner.dokter.voornaam}}</li>
               <li>
-                <b>Telefoon: </b>{{bewoner?.dokter?.telefoon}}</li>
+                <b>Telefoon: </b>{{bewoner.dokter.telefoon}}</li>
               <li>
-                <b>Info: </b>{{bewoner?.dokter?.info}}</li>
+                <b>Info: </b>{{bewoner.dokter.info}}</li>
             </ul>
           </div>
           <div class="modal-footer">
-            <a routerLink="[/bewoner, patient.id]" class="modal-action modal-close waves-effect waves-green btn-flat">Sluiten</a>
+            <a class="modal-action modal-close waves-effect waves-green btn-flat">Sluiten</a>
           </div>
         </div>
         <li>
-          <b>Verpleegkundige: </b>{{bewoner?.verpleegkundige?.naam}}, {{bewoner?.verpleegkundige?.voornaam}}</li>
+          <b>Hoofdverpleegkundige: </b>{{bewoner.verpleegkundige}}</li>
         <li>
-          <a class="btn wave-effect" href="#">Wijzigen</a>
+          <a *ngIf="isAdmin()" class="btn wave-effect" [routerLink]="['/wijzigbewoner', bewoner.id]">Wijzigen</a>
+          <a class="btn wave-effect" [routerLink]="['/chat', bewoner?.id]">Chat</a>
         </li>
       </ul>
     </div>

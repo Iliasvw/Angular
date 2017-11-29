@@ -1,92 +1,196 @@
 <div class="container">
   <div class="row">
-    <h1>Toevoegen bewoner</h1>
+    <h1>{{ bewoner == null ? 'Toevoegen bewoner':'Wijzigen bewoner'}}</h1>
     <p>Hieronder heeft u de mogelijkheid om een nieuwe bewoner toe te voegen.</p>
-    <form>
+    <form [formGroup]="bewonerForm" (ngSubmit)="onSubmit()">
       <div class="col l6 s12">
         <h3>Algemene gegevens</h3>
         <div class="row">
-          <div class="input-field col s12">
-            <input id="naambewoner" type="text" class="validate">
+          <div class="col s12">
             <label for="naambewoner">Naam</label>
+            <input id="naambewoner" type="text" class="validate" formControlName='naambewoner'>
+          </div>
+          <div class='error' *ngIf='bewonerForm.get("naambewoner").errors?.required && bewonerForm.get("naambewoner").touched'>
+            Gelieve een naam in te vullen
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s12">
-            <input id="voornaambewoner" type="text" class="validate">
+          <div class="col s12">
             <label for="voornaambewoner">Voornaam</label>
+            <input id="voornaambewoner" type="text" class="validate" formControlName='vnaambewoner'>
+          </div>
+          <div class='error' *ngIf='bewonerForm.get("vnaambewoner").errors?.required && bewonerForm.get("vnaambewoner").touched'>
+            Gelieve een voornaam in te vullen
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s12">
-            <input type="date" id="geboortedatum">
+          <div class="col s12">
+            <label for="geboortedatum">geboortedatum</label>
+            <input type="date" id="geboortedatum" formControlName='geboortedatum'>
+          </div>
+          <div class='error' *ngIf='bewonerForm.get("geboortedatum").errors?.required && bewonerForm.get("geboortedatum").touched'>
+            Gelieve een geboortedatum in te vullen
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s12">
-            <input id="kamer" type="number" class="validate">
+          <div class="col s12">
             <label for="kamer">Kamer</label>
+            <input id="kamer" type="number" min="1" class="validate" formControlName='kamer'>
+          </div>
+          <div class='error' *ngIf='bewonerForm.get("kamer").errors?.required && bewonerForm.get("kamer").touched'>
+            Gelieve een kamer in te vullen
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s12">
-            <input id="verdieping" type="number" class="validate">
+          <div class="col s12">
             <label for="verdieping">Verdieping</label>
+            <input id="verdieping" min="0" type="number" class="validate" formControlName='verdieping'>
+          </div>
+          <div class='error' *ngIf='bewonerForm.get("verdieping").errors?.required && bewonerForm.get("verdieping").touched'>
+            Gelieve een verdieping in te vullen
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s12">
-            <textarea id="sbehoeften" class="materialize-textarea"></textarea>
+          <div class="col s12">
+            <label for="verpleger">Verpleegkundige</label>
+            <input id="verpleger" type="text" class="validate" formControlName='verpleegkundige'>
+          </div>
+          <div class='error' *ngIf='bewonerForm.get("verpleegkundige").errors?.required && bewonerForm.get("verpleegkundige").touched'>
+            Gelieve een verpleegkundige in te vullen
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
             <label for="sbehoeften">Speciale behoeften</label>
+            <textarea id="sbehoeften" class="materialize-textarea" formControlName='behoeften'></textarea>
+          </div>
+          <div class='error' *ngIf='bewonerForm.get("behoeften").errors?.required && bewonerForm.get("behoeften").touched'>
+            Gelieve de speciale behoeften van deze bewoner in te vullen
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s12">
-            <textarea id="medisch" class="materialize-textarea"></textarea>
+          <div class="col s12">
             <label for="medisch">Medisch dossier en medicatie</label>
+            <textarea id="medisch" class="materialize-textarea" formControlName='medisch'></textarea>
+          </div>
+          <div class='error' *ngIf='bewonerForm.get("medisch").errors?.required && bewonerForm.get("medisch").touched'>
+            Gelieve de medische behoeften in te vullen
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s12">
-            <textarea id="voeding" class="materialize-textarea"></textarea>
+          <div class="col s12">
             <label for="voeding">Voeding</label>
+            <textarea id="voeding" class="materialize-textarea" formControlName='voeding'></textarea>
+          </div>
+          <div class='error' *ngIf='bewonerForm.get("voeding").errors?.required && bewonerForm.get("voeding").touched'>
+            Gelieve de speciale voedingsbehoeften in te vullen
           </div>
         </div>
       </div>
-      <div class="col l6 s12">
-        <h3>Verantwoordelijke</h3>
-        <div id="selectVerantw" class="row">
-          <select class="icons">
-            <option value="" disabled selected>Kies een verantwoordelijke</option>
-            <option value="" data-icon="images/sample-1.jpg" class="left circle">example 1</option>
-            <option value="" data-icon="images/office.jpg" class="left circle">example 2</option>
-            <option value="" data-icon="images/yuna.jpg" class="left circle">example 3</option>
-          </select>
+      <div *ngIf="isEditing()">
+        <div class="col l6 s12">
+          <h3>Verantwoordelijke</h3>
+          <p>
+            <b>Verantwoordelijke: </b>{{ bewoner.verantwoordelijke.naam }}, {{ bewoner.verantwoordelijke.voornaam }}</p>
         </div>
-        <div class="row">
-          <p id="check">
-            <input type="checkbox" class="filled-in" id="filled-in-box" checked/>
-            <label for="filled-in-box">Nieuwe verantwoordelijke</label>
-          </p>
-        </div>
-        <div id="infoverantwoordelijke">
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="naamverantw" type="text" class="validate">
-              <label for="naamverantw">Naam</label>
-            </div>
+      </div>
+      <div *ngIf="!isEditing()">
+        <div class="col l6 s12">
+          <h3>Verantwoordelijke</h3>
+          <div id="selectVerantw" class="row">
+            <select class="icons" formControlName='selectVerantw'>
+              <option value="Kies een verantwoordelijke" selected>Kies een verantwoordelijke</option>
+              <option *ngFor="let verantw of verantwoordelijken" [ngValue]="verantw">{{ verantw.naam }} {{ verantw.voornaam }}</option>
+            </select>
           </div>
           <div class="row">
-            <div class="input-field col s12">
-              <input id="voornaamverantw" type="text" class="validate">
-              <label for="voornaamverantw">Voornaam</label>
+            <p id="check">
+              <input type="checkbox" class="filled-in" id="checkboxverantw" formControlName='checkNieuweVerantw' />
+              <label for="checkboxverantw">Nieuwe verantwoordelijke</label>
+            </p>
+          </div>
+          <div id="infoverantwoordelijke">
+            <div class="row">
+              <div class="col s12">
+                <label for="naamverantw">Naam</label>
+                <input id="naamverantw" type="text" class="validate" formControlName='naamverantw'>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <label for="voornaamverantw">Voornaam</label>
+                <input id="voornaamverantw" type="text" class="validate" formControlName='vnaamverantw'>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <label for="telverantw">Telefoon</label>
+                <input id="telverantw" type="text" class="validate" formControlName='telverantw'>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <label for="emailverantw">E-mailadres</label>
+                <input id="emailverantw" type="text" class="validate" formControlName='emailverantw'>
+              </div>
+              <div class='error' *ngIf='bewonerForm.get("emailverantw").errors?.userAlreadyExists && bewonerForm.get("emailverantw").touched'>
+                Er bestaat reeds een verantwoordelijke met dit e-mailadres
+              </div>
+              <div class='error' *ngIf='bewonerForm.get("emailverantw").errors?.email && bewonerForm.get("emailverantw").touched'>
+                Gelieve een geldig emailadres in te geven
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="col l6 s12">
+          <h3>Dokter</h3>
+          <div id="selectDokter" class="row">
+            <select class="icons" [compareWith]="byId" [ngModel]="bewoner?.dokter" formControlName='selectDokter'>
+              <option value="Kies een dokter" selected>Kies een dokter</option>
+              <option *ngFor="let dokter of dokters" [ngValue]="dokter">{{ dokter.naam }} {{ dokter.voornaam }}</option>
+            </select>
+          </div>
+          <div *ngIf="!isEditing()">
+            <div class="row">
+              <p id="check">
+                <input type="checkbox" class="filled-in" id="checkboxdokter" formControlName='checkNieuweDokter' />
+                <label for="checkboxdokter">Nieuwe dokter</label>
+              </p>
+            </div>
+            <div id="infoDokter">
+              <div class="row">
+                <div class="col s12">
+                  <label for="naamdokter">Naam</label>
+                  <input id="naamdokter" type="text" formControlName='naamdokter' class="validate">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  <label for="voornaamdokter">Voornaam</label>
+                  <input id="voornaamdokter" type="text" formControlName='vnaamdokter' class="validate">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  <label for="telefoondokter">Telefoon</label>
+                  <input id="telefoondokter" type="tel" formControlName='teldokter' class="validate">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  <label for="extrainfo">Extra info</label>
+                  <textarea id="extrainfo" class="materialize-textarea" formControlName='infodokter'></textarea>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="submit" type="submit" class="wave-effect btn" value="Toevoegen">
+          <button id="submit" [disabled]="!bewonerForm.valid" type="submit" class="wave-effect btn">{{ bewoner == null ? 'Toevoegen':'Wijzigen'}}</button>
         </div>
       </div>
     </form>

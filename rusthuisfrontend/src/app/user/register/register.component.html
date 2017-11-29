@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <form class="col l6 s12" [formGroup]='user' (ngSubmit)='onSubmit()' class="">
+      <h1>Aanmaken nieuwe administrator</h1>
+      <div class="row">
+        <div class="col l6 s12">
+          <label for="username">E-mailadres</label>
+          <input type="text" id="username" formControlName='username'>
+          <div class='error' *ngIf=' user.get("username").errors?.required && user.get("username").touched'>
+            E-mailadres is verplicht
+          </div>
+          <div class='error' *ngIf='user.get("username").errors?.email && user.get("username").touched'>
+            Geef een geldig e-mailadres in
+          </div>
+          <div class='error' *ngIf='user.get("username").errors?.userAlreadyExists && user.get("username").touched'>
+            Er bestaat reeds een gebruiker met dit e-mailadres
+          </div>
+        </div>
+      </div>
+      <div formGroupName='passwordGroup'>
+        <div class="row">
+          <div class="col l6 s12">
+            <label for="password">Wachtwoord</label>
+            <input type="password" id="password" formControlName='password'>
+            <div class='error' *ngIf=' passwordControl.errors?.passwordTooShort && passwordControl.touched'>
+              Wachtwoord is te kort, minstens {{passwordControl.errors?.passwordTooShort.requiredLength}} letters
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col l6 s12">
+            <label for="confirmpassword">Bevestig wachtwoord</label>
+            <input type="password" id="confirmpassword" formControlName='confirmPassword'>
+            <div class='error' *ngIf=' user.get("passwordGroup").errors?.passwordsDiffer && user.get("passwordGroup").get("confirmPassword").touched  && user.get("passwordGroup").get("password").touched'>
+              Wachtwoorden moeten hetzelfde zijn
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type='submit' [disabled]='!user.valid' class="btn wave-effect">Registreer</button>
+    </form>
+  </div>
+</div>

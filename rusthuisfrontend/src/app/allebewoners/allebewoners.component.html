@@ -2,15 +2,20 @@
   <div class="row">
     <div class="col s12">
       <h1>Overzicht</h1>
-      <p>Hieronder vindt u een overzicht van de bewoners/bewoonsters waarvoor u verantwoordelijk bent.</p>
+      <p *ngIf="!isAdmin()">Hieronder vindt u een overzicht van de bewoners/bewoonsters waarvoor u verantwoordelijk bent.</p>
+      <p *ngIf="isAdmin()">Hieronder vindt u een overzicht van alle bewoners.</p>
+      <div class="row" *ngIf="isAdmin()">
+        <a class="btn wave-effect" routerLink="/nieuwebewoner">Bewoner toevoegen</a>
+      </div>
       <div class="row">
-          <a class="btn wave-effect" routerLink="/nieuwebewoner">Bewoner toevoegen</a>
+        <label>Zoeken</label>
+        <input [(ngModel)]="searchText" placeholder="Zoekterm" />
       </div>
       <ul class="collection">
-        <li class="collection-item avatar" *ngFor="let patient of patienten | async">
+        <li class="collection-item avatar" *ngFor="let patient of patienten | patientfilter:searchText">
           <img id="face" src="assets/images/unknown.png" alt="">
           <span class="title">
-            <b>Patiënt:</b> {{patient.voornaam}}, {{patient.naam}}</span>
+            <b>Bewoner:</b> {{patient.voornaam}}, {{patient.naam}}</span>
           <p>
             <b>Kamer: </b>{{patient.kamer}}
             <br>

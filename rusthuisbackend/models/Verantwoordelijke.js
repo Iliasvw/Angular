@@ -4,7 +4,11 @@ var VerantwoordelijkeSchema = mongoose.Schema({
     voornaam : String,
     naam : String,
     email: String,
-    patienten: Patient[]
+    patienten: [{
+        type: mongoose.Schema.Types.ObjectId,
+        require: false,
+        ref: 'Patient'
+    }],
+    telefoon: String
 });
-
-mongoose.model('Verantwoordelijke', PatientScherma);
+mongoose.model('Verantwoordelijke', VerantwoordelijkeSchema);

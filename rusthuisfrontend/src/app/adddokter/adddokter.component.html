@@ -1,30 +1,48 @@
-<h1>Toevoegen dokter</h1>
-<p>Hieronder heeft u de mogelijkheid om een dokter toe te voegen aan het platform.</p>
-
-<form>
-  <form class="col l6 s12">
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="naam" type="text" class="validate">
-        <label for="naam">Naam</label>
+<div class="container">
+  <div class="row">
+    <h1>Toevoegen dokter</h1>
+    <p>Hieronder heeft u de mogelijkheid om een dokter toe te voegen aan het platform.</p>
+    <form [formGroup]="dokterform" (ngSubmit)="onSubmit()" class="col l6 s12">
+      <div class="row">
+        <div class="col s12">
+          <label for="naam">Naam</label>
+          <input id="naam" type="text" class="validate" formControlName='naam'>
+        </div>
+        <div class='error' *ngIf='dokterform.get("naam").errors?.required && dokterform.get("naam").touched'>
+          Gelieve een naam in te vullen
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="voornaam" type="text">
-        <label for="voornaam">Voornaam</label>
+      <div class="row">
+        <div class="col s12">
+          <label for="voornaam">Voornaam</label>
+          <input id="voornaam" type="text" formControlName='voornaam'>
+        </div>
+        <div class='error' *ngIf='dokterform.get("voornaam").errors?.required && dokterform.get("voornaam").touched'>
+          Gelieve een naam in te vullen
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="voornaam" type="text">
-        <label for="voornaam">Voornaam</label>
+      <div class="row">
+        <div class="col s12">
+          <label for="telefoon">Telefoon</label>
+          <input id="telefoon" type="tel" formControlName='telefoon' placeholder="+32 488 88 88 88">
+        </div>
+        <div class='error' *ngIf='dokterform.get("telefoon").errors?.required && dokterform.get("telefoon").touched'>
+          Gelieve een telefoon in te vullen
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="email" type="submit" class="wave-effect btn" value="Log in">
+      <div class="row">
+        <div class="col s12">
+          <label for="info">Extra info</label>
+          <textarea class="materialize-textarea" formControlName='info'></textarea>
+        </div>
       </div>
-    </div>
-  </form>
-</form>
+      <div class="row">
+        <div class="col s12">
+          <button [disabled]="!dokterform.valid" type="submit" class="wave-effect btn">
+            {{ dokter == null ? 'Toevoegen':'Wijzigen' }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

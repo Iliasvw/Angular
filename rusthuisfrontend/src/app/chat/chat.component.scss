@@ -1,0 +1,63 @@
+$primary: #00897b;
+$secondary: #00bfa5;
+
+.titel{
+    background-color: $primary;
+    color: white;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.content {
+    height: 400px;
+    overflow: auto;
+    margin-bottom: 10px;
+    .message {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .left, .right {
+        height: auto;
+        padding: 10px;
+        width: 50%;
+        color: white;
+        border-radius: 5px;
+    }
+
+    .left {
+        float: left;
+        background-color: $primary;
+    }
+
+    .right {
+        float: right;
+        background-color: $secondary;
+    }
+
+    /*.message {
+        background-color: $primary;
+        height: auto;
+        padding: 10px;
+        width: 100%;
+        color: white;
+        border-radius: 5px;
+    }*/
+}
+
+.input {
+    height: 80px;
+    button {
+        height: 100%;
+        vertical-align: middle;
+    }
+        textarea {
+            height: 100%;
+            padding: 2.5px 7.5px;
+            resize: none;
+            border: 2px solid $primary;
+        }
+}

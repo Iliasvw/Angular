@@ -10,7 +10,7 @@ $(document).ready(function () {
         closeOnSelect: false // Close upon selecting a date,
     });*/
 
-    $("input#filled-in-box").change(function () {
+    $("input#checkboxverantw").click(function () {
         if (this.checked) {
             $("#infoverantwoordelijke").css({ display: "block" });
             $("#selectVerantw").css({ display: "none" });
@@ -20,7 +20,28 @@ $(document).ready(function () {
             $("#selectVerantw").css({ display: "block" });
         }
     });
+
+    $("input#checkboxdokter").click(function () {
+        if (this.checked) {
+            $("#infoDokter").css({ display: "block" });
+            $("#selectDokter").css({ display: "none" });
+
+        } else {
+            $("#infoDokter").css({ display: "none" });
+            $("#selectDokter").css({ display: "block" });
+        }
+    });
+
     $("#close").click(function () {
         $('.button-collapse').sideNav('hide');
-    })
+    });
+
+    $(".side-nav li").click(function() {
+        $('.button-collapse').sideNav('hide');
+    });
+
+    //$('#content').scrollTop(999999);
+    var objDiv = document.getElementById("content");
+    if(objDiv != null)
+        objDiv.scrollTop = objDiv.scrollHeight;
 });

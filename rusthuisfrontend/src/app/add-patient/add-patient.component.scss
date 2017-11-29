@@ -2,7 +2,7 @@ h3 {
     border-bottom: 1px solid black;
 }
 
-select, #check { 
+select, #check  { 
     display: block !important;
     width: 90%;
     margin: auto;
@@ -12,10 +12,10 @@ select, #check {
     margin-top: 20px;
 }
 
-#selectVerantw {
-    display: none;
+#selectVerantw, #selectDokter {
+    display: block;
 }
 
-#infoverantwoordelijke {
-    display: block;
+#infoverantwoordelijke, #infoDokter {
+    display: none;
 }

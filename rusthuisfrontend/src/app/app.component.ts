@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Patient } from './patient/patient.model';
 import { Verantwoordelijke } from './verantwoordelijke/verantwoordelijke.model';
+
 @Component({
   selector: 'app-havenapp',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
   title = 'app';
   patienten: Patient[] = new Array<Patient>();
