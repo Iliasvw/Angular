@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <h1>Chat</h1>
+    <p>Hieronder heeft u de mogelijkheid om te chatten met de verantwoordelijke van
+      <b>{{ patient.naam }}, {{ patient.voornaam }}</b>.
+    </p>
+    <a *ngIf="isAdmin()" class="btn wave-effect" (click)="clearChat()">Verwijder berichten</a>
+  </div>
+  <div id="chat col s12">
+    <div class="row">
+      <div class="titel">
+        <h4>Gesprek: {{patient.verantwoordelijke.naam}}, {{patient.verantwoordelijke.voornaam}}</h4>
+      </div>
+      <div id="content" class="content">
+        <div *ngFor="let message of messages" class="message">
+          <p *ngIf="message.sender == 'VZW Vincenthof'" class="left">{{message.sender}}: {{message.content}}</p>
+          <p *ngIf="message.sender != 'VZW Vincenthof'" class="right">{{message.sender}}: {{message.content}}</p>
+        </div>
+      </div>
+      <div class="col s12">
+        <div class="row">
+          <div class='error' *ngIf='messageForm.get("message").errors?.required && messageForm.get("message").touched'>
+            Gelieve een bericht in te vullen om te kunnen verzenden
+          </div>
+        </div>
+      </div>
+      <div>
+        <form [formGroup]="messageForm" (ngSubmit)="onSubmit()" class="input">
+          <textarea placeholder="Bericht" class="col s8" formControlName="message"></textarea>
+          <button type="submit" [disabled]="!messageForm.valid" class="btn wave-effect col s3 offset-s1">Verstuur</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

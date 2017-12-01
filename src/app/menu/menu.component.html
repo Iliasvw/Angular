@@ -1,0 +1,65 @@
+<header>
+  <img id="headerImg" src="assets/images/header2.jpg" width="100%" />
+  <nav class="teal darken-1">
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">
+        <img id="logo" src="assets/images/logo_rusthuis.png" />
+      </a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+      <ul class="right hide-on-med-and-down">
+        <li>
+          <a routerLink="/">Home</a>
+        </li>
+        <li *ngIf="isAdmin()">
+          <a routerLink="/controlepaneel">Controlepaneel</a>
+        </li>
+        <span *ngIf="(currentUser | async) else loginlink">
+          <li>
+            <a routerLink="/bewoners">Inwoners</a>
+          </li>
+          <li>
+            <a routerLink="/logout">{{(currentUser | async)}}, uitloggen</a>
+          </li>
+        </span>
+        <ng-template #loginlink>
+          <li>
+            <a routerLinkActive='active' routerLink="/login">Login</a>
+          </li>
+        </ng-template>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li id="close">
+          <i class="large material-icons">close</i>
+        </li>
+        <li>
+          <a routerLink="/">Home</a>
+        </li>
+        <li *ngIf="isAdmin()">
+          <a routerLink="/controlepaneel">Controlepaneel</a>
+        </li>
+        <span *ngIf="(currentUser | async) else loginlink">
+          <li>
+            <a routerLink="/bewoners">Inwoners</a>
+          </li>
+          <li>
+            <a routerLink="/logout">{{(currentUser | async)}}, uitloggen</a>
+          </li>
+        </span>
+        <ng-template #loginlink>
+          <li>
+            <a routerLinkActive='active' routerLink="/login">Login</a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- 
+<a *ngIf='(currentUser | async) else loginlink' class="item" routerLinkActive='active' routerLink="/logout">{{currentUser|async}}</a>
+    <ng-template #loginlink>
+      <a class="item" routerLinkActive='active' routerLink="/login">log in</a>
+    </ng-template>
+-->

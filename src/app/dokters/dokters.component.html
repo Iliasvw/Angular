@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <h1>Dokters</h1>
+    <p>Hieronder vindt u alle dokters die in het systeem aanwezig zijn.</p>
+    <a class="wave-effect btn" routerLink="/nieuwedokter">Nieuwe dokter</a>
+  </div>
+  <div class="row">
+    <label>Zoeken</label>
+    <input [(ngModel)]="searchText" placeholder="Zoekterm" />
+  </div>
+  <div>
+    <div class="row">
+      <div *ngFor="let dokter of dokters | filter:searchText" class="col s12 m6 l4">
+        <div class="card teal darken-4">
+          <div class="card-content white-text">
+            <a (click)="changeDokterToDelete(dokter)" href="#modal" class="modal-trigger">
+              <i id="close" class="material-icons">close</i>
+            </a>
+            <a [routerLink]="['/wijzigdokter', dokter.id]">
+              <i id="edit" class="material-icons">edit</i>
+            </a>
+            <span class="card-title">{{dokter.naam}}, {{dokter.voornaam}}</span>
+            <p>
+              <b>Telefoon:</b> {{dokter.telefoon}}</p>
+            <p>
+              <b>Extra info:</b> {{dokter.info}}</p>
+          </div>
+        </div>
+        <div materialize="modal" id="modal" class="modal">
+          <div class="modal-content">
+            <h4>Verwijderen dokter</h4>
+            <p>Bent u zeker dat u dokter
+              '<b>{{dokterToDelete?.naam}} {{dokterToDelete?.voornaam}}</b>' wilt verwijderen?</p>
+          </div>
+          <div class="modal-footer">
+            <button (click)="verwijderDokter(dokterToDelete)" class="modal-action modal-close waves-effect waves-green btn-flat">Verwijderen</button>
+            <button class="modal-action modal-close waves-effect waves-green btn-flat">Annuleren</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

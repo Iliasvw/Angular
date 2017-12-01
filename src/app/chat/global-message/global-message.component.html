@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <h1>Globaal bericht</h1>
+    <p>Hieronder heeft u de mogelijkheid om een globaal bericht te verzenden.</p>
+  </div>
+  <div class="row">
+    <form [formGroup]="message" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <textarea class="message" formControlName='message'></textarea>
+      </div>
+      <div class="row">
+        <button class="btn wave-effect" type="submit" [disabled]="!message.valid">Verzenden</button>
+      </div>
+    </form>
+  </div>
+</div>

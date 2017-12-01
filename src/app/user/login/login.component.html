@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <h1>Login</h1>
+    <p>Geef uw e-mailadres en wachtwoord in om in te loggen.</p>
+    <form [formGroup]="user" class="col l6 s12" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div *ngIf='errorMsg' class='error'>{{errorMsg}}</div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate" formControlName="username">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="wachtwoord" type="password" formControlName="password">
+          <label for="wachtwoord">Wachtwoord</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="submit" type="submit" class="wave-effect btn" value="Log in">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

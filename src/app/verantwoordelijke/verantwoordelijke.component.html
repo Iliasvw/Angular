@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <h1>Verantwoordelijke</h1>
+        <h4>Algemene gegevens</h4>
+        <p>
+            <b>Naam: </b>{{verantwoordelijke.naam}}</p>
+        <p>
+            <b>Voornaam: </b>{{verantwoordelijke.voornaam}}</p>
+        <p>
+            <b>E-mailadres: </b>{{verantwoordelijke.email}}</p>
+        <p>
+            <b>Telefoon: </b>{{verantwoordelijke.telefoon}}
+        </p>
+
+        <h4>
+            Verantwoordelijk voor volgende patiënten
+        </h4>
+        <ul class="collection">
+            <li class="collection-item avatar" *ngFor="let patient of verantwoordelijke.patienten">
+                <img id="face" src="assets/images/unknown.png" alt="">
+                <span class="title">
+                    <b>Bewoner:</b> {{patient.voornaam}}, {{patient.naam}}</span>
+                <p>
+                    <b>Kamer: </b>{{patient.kamer}}
+                    <br>
+                    <b>Verdieping: </b>{{patient.verdieping}}
+                    <br>
+                </p>
+                <a [routerLink]="['/chat', patient.id]" class="secondary-content">
+                    <a class="btn wave-effect">Chatten</a>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
