@@ -11,7 +11,7 @@ import { Notificatie } from './notificatiecentrum/notificatie.model';
 
 @Injectable()
 export class RusthuisserviceService {
-  private _appUrl = 'https://rocky-brushlands-65366.herokuapp.com/rusthuis/';
+  private _appUrl = '/rusthuis/';
   private _headers = new Headers({ Authorization: `Bearer ${this.auth.token}` })
   constructor(private http: Http, private auth: AuthenticationService) { }
 
