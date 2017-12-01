@@ -161,20 +161,21 @@ router.put('/rusthuis/updatebewoner/:id', auth, function (req, res, next) {
 router.post('/rusthuis/bewoner/', auth, function (req, res, next) {
   let patient = new Patient(req.body.patient);
   let verantw = new Verantwoordelijke(req.body.verantw);
-  console.log("Id: " + req.body.verantw);
   let dokter = new Dokter(req.body.dokter);
 
   verantw.isNew = verantw.patienten.length == 0 ? true : false;
+  console.log(dokter._id);
   dokter.isNew = dokter._id == undefined ? true : false;
   verantw.patienten.push(patient);
   verantw.save(function (err, rec) {
     if (err) return next(err);
   });
 
+  patient.verantwoordelijke = verantw;
+  patient.dokter = dokter;
+
   dokter.save(function (err, rec) {
     if (err) return next(err);
-    patient.verantwoordelijke = verantw;
-    patient.dokter = dokter;
   });
 
   patient.save(function (err, rec) {
