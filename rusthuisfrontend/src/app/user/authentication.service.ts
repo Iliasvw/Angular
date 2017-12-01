@@ -64,7 +64,7 @@ export class AuthenticationService {
   }
 
   register(username: string, password: string): Observable<boolean> {
-    return this.http.post(`${this._url}/register`, { username: username, password: password })
+    return this.http.post(`${this._url}/register`, { username: username, password: password, isAdmin: false})
       .map(res => res.json()).map(res => {
         const token = res.token;
         if (token) {
@@ -79,7 +79,7 @@ export class AuthenticationService {
   }
 
   registerNewAdministrator(username: string, password: string) {
-    return this.http.post(`${this._url}/register`, { username: username, password: password });
+    return this.http.post(`${this._url}/register`, { username: username, password: password, isAdmin: true});
   }
 
   checkUserNameAvailability(username: string): Observable<boolean> {
