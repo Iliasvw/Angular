@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from '';
 import 'rxjs/add/operator/map';
 import { Patient } from './patient/patient.model';
 import { Verantwoordelijke } from './verantwoordelijke/verantwoordelijke.model';
@@ -11,7 +11,7 @@ import { Notificatie } from './notificatiecentrum/notificatie.model';
 
 @Injectable()
 export class RusthuisserviceService {
-  private _appUrl = 'http://localhost:4200/rusthuis/';
+  private _appUrl = 'https://rocky-brushlands-65366.herokuapp.com/rusthuis/';
   private _headers = new Headers({ Authorization: `Bearer ${this.auth.token}` })
   constructor(private http: Http, private auth: AuthenticationService) { }
 
