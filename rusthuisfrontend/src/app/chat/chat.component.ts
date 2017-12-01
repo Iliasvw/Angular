@@ -17,7 +17,7 @@ export class ChatComponent implements OnInit {
 
   private _patient: Patient;
   private _messages: Message[];
-  private messageForm: FormGroup;
+  public messageForm: FormGroup;
 
   constructor(private _route: ActivatedRoute, private fb: FormBuilder,
     private authService: AuthenticationService, private rusthuisService: RusthuisserviceService) {

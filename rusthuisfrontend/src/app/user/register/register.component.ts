@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  private user: FormGroup;
+  public user: FormGroup;
 
   constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private router: Router) { }
   

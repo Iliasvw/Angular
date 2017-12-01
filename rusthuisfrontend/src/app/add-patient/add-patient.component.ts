@@ -17,7 +17,7 @@ import { AuthenticationService } from '../user/authentication.service';
 })
 export class AddPatientComponent implements OnInit {
 
-  private bewonerForm: FormGroup;
+  public bewonerForm: FormGroup;
   private _verantwoordelijken: Verantwoordelijke[];
   private _dokters: Dokter[];
   private _bewoner: Patient;

@@ -10,7 +10,7 @@ import { Router } from '@angular/router/';
   styleUrls: ['./global-message.component.scss']
 })
 export class GlobalMessageComponent implements OnInit {
-  private message;
+  public message;
   constructor(private fb: FormBuilder, private rusthuisService: RusthuisserviceService,
   private router: Router) { }
 

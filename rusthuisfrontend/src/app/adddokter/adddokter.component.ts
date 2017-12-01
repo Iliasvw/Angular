@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AdddokterComponent implements OnInit {
 
-  private dokterform: FormGroup;
+  public dokterform: FormGroup;
   private _dokter: Dokter;
 
   constructor(private fb: FormBuilder, private router: Router,

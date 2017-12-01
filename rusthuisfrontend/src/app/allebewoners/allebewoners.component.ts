@@ -13,6 +13,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AllebewonersComponent implements OnInit {
   private _patienten: Patient[];
+  public searchText = "";
   constructor(private _rusthuisservice: RusthuisserviceService, private authService: AuthenticationService) {
   }
 

@@ -12,6 +12,7 @@ export class DoktersComponent implements OnInit {
 
   private _dokters: Dokter[];
   public dokterToDelete;
+  public searchText = "";
 
   constructor(private _rusthuisservice: RusthuisserviceService) { }
 
