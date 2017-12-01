@@ -164,9 +164,7 @@ router.post('/rusthuis/bewoner/', auth, function (req, res, next) {
   let dokter = new Dokter(req.body.dokter);
 
   verantw.isNew = verantw.patienten.length == 0 ? true : false;
-  console.log("Dokter id: " + dokter._id);
-  dokter.isNew = dokter._id == undefined ? true : false;
-  console.log("Dokter isNew: " + dokter.isNew);
+  dokter.isNew = req.body.dokter.id == undefined ? true : false;
   verantw.patienten.push(patient);
   verantw.save(function (err, rec) {
     if (err) return next(err);
