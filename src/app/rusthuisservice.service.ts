@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
-import { Observable } from '';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Patient } from './patient/patient.model';
 import { Verantwoordelijke } from './verantwoordelijke/verantwoordelijke.model';
