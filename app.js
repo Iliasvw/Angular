@@ -15,7 +15,7 @@ require('./models/Notificatie');
 require('./config/passport');
 
 //mongoose.connect('mongodb://localhost/rusthuisdb', { useMongoClient: true});
-mongoose.connect("mongodb://<rusthuisdb_user>:<fez33Ler33>@ds127126.mlab.com:27126/rusthuisdb", { useMongoClient: true});
+mongoose.connect("mongodb://rusthuisdb_user:fez33Ler33@ds127126.mlab.com:27126/rusthuisdb", { useMongoClient: true});
 let passport = require('passport');
 
 var index = require('./routes/index');
