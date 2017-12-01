@@ -171,11 +171,10 @@ router.post('/rusthuis/bewoner/', auth, function (req, res, next) {
     if (err) return next(err);
   });
 
-  patient.verantwoordelijke = verantw;
-  patient.dokter = dokter;
-
   dokter.save(function (err, rec) {
     if (err) return next(err);
+    patient.verantwoordelijke = verantw;
+    patient.dokter = dokter;
   });
 
   patient.save(function (err, rec) {
