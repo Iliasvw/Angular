@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "source app-env && node ./bin/www"
+    "start": "source app-env && node ./bin/www",
+    "test": "source test-env && node ./node_modules/jasmine/bin/jasmine.js"
   },
   "dependencies": {
     "body-parser": "~1.18.2",

@@ -23,13 +23,8 @@ export class PatientComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this._route.paramMap.subscribe(item => 
-    //  this._id = item.get('id'));
-    //this._id = this._route.snapshot.params.id;
-    //this._rusthuisservice.bewonerById(this._id).subscribe(val => this._bewoner = val);
     this._route.data.subscribe(item => { 
       this._bewoner = item['patient'];
-      console.log(item['patient'].dokter);
     });
   }
 
@@ -40,10 +35,6 @@ export class PatientComponent implements OnInit {
   get id() {
     return this._id;
   }
-
-  /*get isAdmin(): Observable<boolean> {
-    return this.authService.admin$;
-  }*/
 
   isAdmin() {
     return this.authService.isAdmin();

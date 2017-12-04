@@ -14,7 +14,8 @@ require('./models/Message');
 require('./models/Notificatie');
 require('./config/passport');
 
-mongoose.connect('mongodb://localhost/rusthuisdb', { useMongoClient: true});
+//mongoose.connect('mongodb://localhost/rusthuisdb', { useMongoClient: true});
+mongoose.connect(process.env.TEST_DATABASE, { useMongoClient: true});
 let passport = require('passport');
 
 var index = require('./routes/index');
