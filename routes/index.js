@@ -37,15 +37,6 @@ router.param('patient', function (req, res, next, id) {
   })
 });
 
-/*router.get('/rusthuis/bewoner/:id', function (req, res, next) {
-  Patient.findById(req.params.id, function (err, patient) {
-    if (err) return next(err);
-    if (!patient)
-      return next(new Error('not found ' + req.params.id));
-    res.json(patient);
-  }).populate('verantwoordelijke');;
-});*/
-
 router.get('/rusthuis/bewoner/:patient', auth, function (req, res) {
   res.json(req.patient);
 });
@@ -113,49 +104,11 @@ router.put('/rusthuis/updatedokter/:id', auth, function (req, res, next) {
   });
 });
 
-router.put('/rusthuis/updatebewoner/:id', auth, function (req, res, next) {
+/*router.put('/rusthuis/updatebewoner/:id', auth, function (req, res, next) {
   let pt = new Patient(req.body);
   Patient.findByIdAndUpdate(req.params.id, pt, function (err, patient) {
     res.send(patient);
   });
-});
-
-/*router.post('/rusthuis/bewoner/:patient/verantwoordelijke', auth, function (req, res, next) {
-  let verantw = new Verantwoordelijke(req.body.verantw);
-  verantw.isNew = verantw._id === undefined ? true : false;
-  req.patient.verantwoordelijke = verantw;
-  req.patient.save(function (err, patient) {
-    if (err) return next(err);
-    verantw.patienten.push(patient);
-    /*verantw.save(function (err, rec) {
-      if (err) return next(err);
-      res.json(verantw);
-    });
-  });
-});*/
-
-/*router.post('/rusthuis/bewoner/:patient/dokter', auth, function (req, res, next) {
-  let dk = new Dokter(req.body.dk);
-  let patient = new Patient(req.patient);
-  console.log(dk);
-  dk.isNew = dk._id == undefined ? true : false;
-  //if (dk._id === undefined) {
-  dk.save(function (err, dokter) {
-    if (err) return next(err);
-    req.patient.dokter = dokter;
-    req.patient.save(function (err, rec) {
-      if (err) return next(err);
-      res.json(dokter);
-    });
-  });
-  /*} else {
-    req.patient.dokter = dk;
-    console.log(dk);
-    req.patient.save(function (err, rec) {
-      if (err) return next(err);
-      res.json(dk);
-    });
-  }
 });*/
 
 router.post('/rusthuis/bewoner/', auth, function (req, res, next) {
@@ -190,7 +143,9 @@ router.put('/rusthuis/updatebewoner/', auth, function (req, res, next) {
   patient.isNew = false;
   patient.save(function (err, rec) {
     if (err) return next(err);
-  })
+  });
+
+  res.json('Updated');
 });
 
 router.get('/rusthuis/verantwoordelijke/:id', auth, function (req, res, next) {
@@ -210,30 +165,7 @@ router.post('/rusthuis/bewoner/:patient/message', auth, function (req, res, next
     if (err) return next(err);
     res.json(message);
   })
-
-  /*message.save(function (err, mes) {
-    if (err) return next(err);
-    req.patient.chat.push(message);
-    req.patient.save(function (err, rec) {
-      if (err) return next(err);
-      res.json(mes);
-    })
-  });*/
 });
-
-/*router.put('/rusthuis/bewoner/:patient/updatedokter', auth, function (req, res, next) {
-  let dk = new Dokter(req.body);
-  let patient = new Patient(req.patient);
-
-  Patient.findByIdAndUpdate(patient._id, patient, function (err, dokter) {
-    if (err) return next(err);
-    req.patient.dokter = dokter;
-    req.patient.save(function (err, rec) {
-      if (err) return next(err);
-      res.json(patient);
-    })
-  });
-});*/
 
 router.post('/rusthuis/addnotificatie/', auth, function (req, res, next) {
   Notificatie.findOne({ 'patientid': req.body.id }, function (err, notificatie) {

@@ -71,10 +71,6 @@ export class RusthuisserviceService {
       Verantwoordelijke.fromJSON(item));
   }
 
-  /*addVerantwoordelijke(verantw: Verantwoordelijke, patient: Patient) {
-    return this.http.post(`${this._appUrl}bewoner/${patient.id}/verantwoordelijke`, { pat: patient, verantw: verantw, patienten: verantw.patienten }, { headers: this._headers });
-  }*/
-
   addMessage(message: Message, patient: Patient) {
     return this.http.post(`${this._appUrl}bewoner/${patient.id}/message`, { pat: patient, message: message }, { headers: this._headers })
       .map(res => res.json()).map(item => new Message(item.sender, item.content, item.messageId));
@@ -84,11 +80,6 @@ export class RusthuisserviceService {
     return this.http.put(this._appUrl + "updatebewoner/" + patient.id, patient, { headers: this._headers })
       .map(res => res.json()).map(item => Patient.fromJSON(item));
   }
-
-  /*voegDokterToeAanPatient(dokter: Dokter, patient: Patient) {
-    return this.http.post(`${this._appUrl}bewoner/${patient.id}/dokter`, { dk: dokter }, { headers: this._headers });
-  }*/
-
   addUser(username, password, isAdmin) {
     return this.http.post('/rusthuis/users/register', { username: username, isAdmin: isAdmin, password: password });
   }
