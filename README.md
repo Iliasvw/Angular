@@ -1,6 +1,6 @@
 # RusthuisApp
 
-PROJECT IS TE BEKIJKEN OP: https://iliasvw.github.io/Angular/
+PROJECT IS TE BEKIJKEN OP: https://rocky-brushlands-65366.herokuapp.com/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
 
