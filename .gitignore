@@ -90,3 +90,4 @@ e2e/*.js
 e2e/*.map
 
 rusthuisbackend/test-env
+test-env
